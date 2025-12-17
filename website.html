@@ -1,0 +1,1711 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aviansys Technologies - Engineering & Technology Solutions</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #0066cc;
+            --primary-dark: #004a99;
+            --primary-light: #e6f0ff;
+            --secondary: #003d7a;
+            --text: #1a1a1a;
+            --text-light: #555555;
+            --text-lighter: #888888;
+            --white: #ffffff;
+            --gray-50: #f9f9f9;
+            --gray-100: #f5f5f5;
+            --gray-200: #e8e8e8;
+            --border: #e0e0e0;
+            --shadow: 0 2px 12px rgba(0, 66, 204, 0.08);
+            --shadow-lg: 0 12px 40px rgba(0, 66, 204, 0.15);
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Segoe UI', Trebuchet MS, sans-serif;
+            color: var(--text);
+            line-height: 1.6;
+            background: var(--white);
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Navigation */
+        nav {
+            background: var(--white);
+            box-shadow: var(--shadow);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        nav.scrolled {
+            box-shadow: var(--shadow-lg);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+            height: 80px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            cursor: pointer;
+            text-decoration: none;
+            color: var(--text);
+            transition: transform 0.3s ease;
+        }
+
+        .logo:hover {
+            transform: scale(1.05);
+        }
+
+        .logo i {
+            font-size: 32px;
+            color: var(--white);
+            background: var(--primary);
+            padding: 10px;
+            border-radius: 10px;
+            width: 52px;
+            height: 52px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .logo-text h1 {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .logo-text p {
+            font-size: 11px;
+            color: var(--text-lighter);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 40px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text);
+            font-weight: 500;
+            position: relative;
+            transition: color 0.3s ease;
+            cursor: pointer;
+        }
+
+        .nav-links a.active,
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .nav-links a.active::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: var(--primary);
+            border-radius: 10px;
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 6px;
+        }
+
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background: var(--text);
+            transition: all 0.3s ease;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #003d7a 0%, #0066cc 50%, #0052a3 100%);
+            color: var(--white);
+            padding: 180px 20px 100px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            margin-top: 80px;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><defs><pattern id="dots" x="0" y="0" width="50" height="50" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="2" fill="rgba(255,255,255,0.1)"/></pattern></defs><rect width="1200" height="600" fill="url(%23dots)"/></svg>');
+            opacity: 0.5;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 10;
+            max-width: 800px;
+            margin: 0 auto;
+            animation: slideUp 0.8s ease-out;
+        }
+
+        .hero h1 {
+            font-size: 56px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            line-height: 1.2;
+            letter-spacing: -1px;
+        }
+
+        .hero h1 span {
+            display: block;
+            color: #b3d9ff;
+            margin-top: 10px;
+            font-weight: 600;
+        }
+
+        .hero p {
+            font-size: 18px;
+            margin-bottom: 40px;
+            color: #e6f0ff;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 14px 32px;
+            font-size: 16px;
+            font-weight: 600;
+            border-radius: 10px;
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow);
+        }
+
+        .btn-primary {
+            background: var(--white);
+            color: var(--primary);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--white);
+            border: 2px solid var(--white);
+        }
+
+        .btn-secondary:hover {
+            background: var(--white);
+            color: var(--primary);
+            transform: translateY(-3px);
+        }
+
+        .btn-primary-outline {
+            background: var(--primary);
+            color: var(--white);
+        }
+
+        .btn-primary-outline:hover {
+            background: var(--primary-dark);
+            transform: translateY(-3px);
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Sections */
+        section {
+            display: none;
+            animation: fadeIn 0.6s ease-in;
+        }
+
+        section.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        /* Stats Section */
+        .stats {
+            padding: 60px 20px;
+            background: var(--white);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            text-align: center;
+        }
+
+        .stat-item h3 {
+            font-size: 48px;
+            color: var(--primary);
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .stat-item p {
+            color: var(--text-light);
+            font-size: 16px;
+        }
+
+        .stat-item {
+            transition: transform 0.3s ease;
+        }
+
+        .stat-item:hover {
+            transform: scale(1.1);
+        }
+
+        /* Services Grid */
+        .services-section {
+            padding: 80px 20px;
+            background: var(--gray-50);
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-header h2 {
+            font-size: 42px;
+            margin-bottom: 15px;
+            color: var(--text);
+            font-weight: 700;
+        }
+
+        .section-header p {
+            font-size: 18px;
+            color: var(--text-light);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+
+        .service-card {
+            background: var(--white);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+            text-align: center;
+            cursor: pointer;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .service-card .icon {
+            font-size: 48px;
+            color: var(--primary);
+            background: var(--primary-light);
+            width: 70px;
+            height: 70px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            transition: all 0.3s ease;
+        }
+
+        .service-card:hover .icon {
+            background: var(--primary);
+            color: var(--white);
+            transform: scale(1.1);
+        }
+
+        .service-card h3 {
+            font-size: 18px;
+            margin-bottom: 15px;
+            color: var(--text);
+            font-weight: 600;
+        }
+
+        .service-card p {
+            color: var(--text-light);
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        .center-btn {
+            text-align: center;
+        }
+
+        /* About Section */
+        .about-section {
+            padding: 80px 20px;
+            background: var(--white);
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+            margin-bottom: 60px;
+        }
+
+        .about-text h2 {
+            font-size: 42px;
+            color: var(--text);
+            margin-bottom: 30px;
+            font-weight: 700;
+        }
+
+        .about-text p {
+            color: var(--text-light);
+            margin-bottom: 15px;
+            line-height: 1.8;
+            font-size: 15px;
+        }
+
+        .checklist {
+            list-style: none;
+            margin-top: 30px;
+        }
+
+        .checklist li {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 15px;
+            color: var(--text);
+            font-size: 15px;
+        }
+
+        .checklist i {
+            color: var(--primary);
+            font-size: 18px;
+            flex-shrink: 0;
+        }
+
+        .about-highlights {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 20px;
+        }
+
+        .highlight-box {
+            background: var(--primary-light);
+            padding: 30px;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+
+        .highlight-box:hover {
+            transform: scale(1.05);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .highlight-box h3 {
+            font-size: 40px;
+            color: var(--primary);
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .highlight-box p {
+            color: var(--text);
+            font-weight: 500;
+            margin: 0;
+        }
+
+        .mission-vision {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+        }
+
+        .mission-box {
+            background: var(--gray-100);
+            padding: 40px;
+            border-radius: 15px;
+            transition: all 0.3s ease;
+        }
+
+        .mission-box:hover {
+            box-shadow: var(--shadow-lg);
+            transform: translateY(-5px);
+        }
+
+        .mission-box .icon {
+            font-size: 48px;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+
+        .mission-box h3 {
+            font-size: 28px;
+            color: var(--text);
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .mission-box p {
+            color: var(--text-light);
+            line-height: 1.8;
+            margin: 0;
+        }
+
+        /* Values Grid */
+        .values-section {
+            padding: 80px 20px;
+            background: var(--gray-50);
+        }
+
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 60px;
+        }
+
+        .value-card {
+            background: var(--white);
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: var(--shadow);
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .value-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .value-card .icon {
+            font-size: 40px;
+            color: var(--white);
+            background: var(--primary);
+            width: 60px;
+            height: 60px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+        }
+
+        .value-card h3 {
+            font-size: 20px;
+            color: var(--text);
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .value-card p {
+            color: var(--text-light);
+            font-size: 14px;
+            margin: 0;
+        }
+
+        /* Timeline */
+        .timeline-section {
+            padding: 80px 20px;
+            background: var(--white);
+        }
+
+        .timeline {
+            position: relative;
+            padding: 40px 0;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 2px;
+            height: 100%;
+            background: var(--primary-light);
+        }
+
+        .timeline-item {
+            margin-bottom: 50px;
+            position: relative;
+        }
+
+        .timeline-dot {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 20px;
+            height: 20px;
+            background: var(--primary);
+            border: 4px solid var(--white);
+            border-radius: 50%;
+            box-shadow: var(--shadow);
+            z-index: 10;
+            top: 0;
+        }
+
+        .timeline-content {
+            width: calc(50% - 30px);
+            background: var(--gray-100);
+            padding: 25px;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .timeline-item:nth-child(odd) .timeline-content {
+            margin-left: 0;
+            margin-right: auto;
+            text-align: right;
+        }
+
+        .timeline-item:nth-child(even) .timeline-content {
+            margin-left: auto;
+            margin-right: 0;
+            text-align: left;
+        }
+
+        .timeline-content:hover {
+            box-shadow: var(--shadow-lg);
+            transform: scale(1.05);
+        }
+
+        .timeline-content h3 {
+            font-size: 24px;
+            color: var(--primary);
+            margin-bottom: 5px;
+            font-weight: 700;
+        }
+
+        .timeline-content h4 {
+            font-size: 18px;
+            color: var(--text);
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        .timeline-content p {
+            color: var(--text-light);
+            font-size: 14px;
+            margin: 0;
+        }
+
+        /* Contact Section */
+        .contact-section {
+            padding: 80px 20px;
+            background: var(--gray-50);
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: start;
+        }
+
+        .contact-info-cards {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+
+        .info-card {
+            background: var(--white);
+            padding: 25px;
+            border-radius: 12px;
+            display: flex;
+            gap: 15px;
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+        }
+
+        .info-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .info-card .icon {
+            font-size: 32px;
+            color: var(--primary);
+            flex-shrink: 0;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--primary-light);
+            border-radius: 10px;
+        }
+
+        .info-card h4 {
+            font-size: 16px;
+            color: var(--text);
+            margin-bottom: 5px;
+            font-weight: 600;
+        }
+
+        .info-card p {
+            color: var(--text-light);
+            font-size: 14px;
+            margin: 0;
+        }
+
+        .contact-form {
+            background: var(--white);
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: var(--shadow);
+        }
+
+        .contact-form h3 {
+            font-size: 28px;
+            color: var(--text);
+            margin-bottom: 30px;
+            font-weight: 700;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--text);
+            font-size: 14px;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            font-family: inherit;
+            font-size: 14px;
+            transition: all 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px var(--primary-light);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .form-submit {
+            width: 100%;
+            background: var(--primary);
+            color: var(--white);
+            border: none;
+            padding: 14px;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 20px;
+        }
+
+        .form-submit:hover {
+            background: var(--primary-dark);
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .success-message {
+            display: none;
+            background: #f0fdf4;
+            border: 1px solid #bbf7d0;
+            border-radius: 10px;
+            padding: 30px;
+            text-align: center;
+            color: #166534;
+            animation: slideUp 0.6s ease-out;
+        }
+
+        .success-message i {
+            font-size: 48px;
+            color: #22c55e;
+            display: block;
+            margin-bottom: 15px;
+        }
+
+        .success-message h4 {
+            font-size: 22px;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, #003d7a 0%, #0066cc 50%, #0052a3 100%);
+            color: var(--white);
+            padding: 80px 20px;
+            text-align: center;
+        }
+
+        .cta-section h2 {
+            font-size: 42px;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .cta-section p {
+            font-size: 18px;
+            margin-bottom: 30px;
+            color: #e6f0ff;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Footer */
+        footer {
+            background: #003d7a;
+            color: #c9e4ff;
+            padding: 60px 20px 20px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-col h4 {
+            color: var(--white);
+            margin-bottom: 20px;
+            font-size: 16px;
+            font-weight: 700;
+        }
+
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 15px;
+        }
+
+        .footer-logo i {
+            font-size: 28px;
+            color: var(--white);
+            background: var(--primary);
+            padding: 8px;
+            border-radius: 8px;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .footer-logo-text h3 {
+            color: var(--white);
+            font-size: 20px;
+            margin: 0;
+            font-weight: 700;
+        }
+
+        .footer-logo-text p {
+            color: var(--primary-light);
+            font-size: 11px;
+            margin: 0;
+        }
+
+        .footer-col ul {
+            list-style: none;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 12px;
+        }
+
+        .footer-col a {
+            color: #c9e4ff;
+            text-decoration: none;
+            transition: color 0.3s ease;
+            font-size: 14px;
+            cursor: pointer;
+        }
+
+        .footer-col a:hover {
+            color: var(--white);
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .contact-info li {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 14px;
+        }
+
+        .contact-info i {
+            flex-shrink: 0;
+            color: var(--primary);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 12px;
+            margin-top: 15px;
+        }
+
+        .social-links a {
+            color: var(--white);
+            background: rgba(255, 255, 255, 0.1);
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .social-links a:hover {
+            background: var(--primary);
+            transform: scale(1.1);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 20px;
+            text-align: center;
+            color: #a8d0ff;
+            font-size: 14px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hamburger {
+                display: flex;
+            }
+
+            .hero {
+                padding: 120px 20px 60px;
+            }
+
+            .hero h1 {
+                font-size: 36px;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .about-grid,
+            .mission-vision,
+            .contact-grid,
+            .timeline::before {
+                grid-template-columns: 1fr;
+            }
+
+            .about-highlights {
+                grid-template-columns: 1fr;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+
+            .timeline-content {
+                width: 100%;
+                margin: 0 !important;
+                text-align: left !important;
+            }
+
+            .timeline::before {
+                left: 30px;
+            }
+
+            .timeline-dot {
+                left: 6px;
+            }
+
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 20px;
+            }
+
+            .stat-item h3 {
+                font-size: 36px;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .section-header h2 {
+                font-size: 32px;
+            }
+
+            .timeline-item {
+                margin-left: 80px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 28px;
+            }
+
+            .section-header h2 {
+                font-size: 24px;
+            }
+
+            .nav-container {
+                padding: 12px 0;
+                height: 70px;
+            }
+
+            .logo i {
+                font-size: 24px;
+                width: 44px;
+                height: 44px;
+            }
+
+            .logo-text h1 {
+                font-size: 20px;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .contact-form {
+                padding: 25px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="container">
+            <div class="nav-container">
+                <a class="logo" onclick="showSection('home')">
+                    <i class="fas fa-plane"></i>
+                    <div class="logo-text">
+                        <h1>Aviansys</h1>
+                        <p>Technologies</p>
+                    </div>
+                </a>
+                <ul class="nav-links">
+                    <li><a onclick="showSection('home')" class="nav-link active">Home</a></li>
+                    <li><a onclick="showSection('about')" class="nav-link">About Us</a></li>
+                    <li><a onclick="showSection('services')" class="nav-link">Services</a></li>
+                    <li><a onclick="showSection('contact')" class="nav-link">Contact</a></li>
+                </ul>
+                <div class="hamburger" onclick="toggleMenu()">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Home Section -->
+    <section id="home" class="active">
+        <div class="hero">
+            <div class="hero-content">
+                <h1>Engineering Excellence<span>Technology Innovation</span></h1>
+                <p>End-to-end engineering and technology solutions for aerospace, automotive, healthcare, and IT industries</p>
+                <div class="hero-buttons">
+                    <button class="btn btn-primary" onclick="showSection('services')">Our Services</button>
+                    <button class="btn btn-secondary" onclick="showSection('contact')">Get In Touch</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="stats">
+            <div class="container">
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <h3>500+</h3>
+                        <p>Projects Completed</p>
+                    </div>
+                    <div class="stat-item">
+                        <h3>50+</h3>
+                        <p>Expert Team Members</p>
+                    </div>
+                    <div class="stat-item">
+                        <h3>15+</h3>
+                        <p>Years Experience</p>
+                    </div>
+                    <div class="stat-item">
+                        <h3>100+</h3>
+                        <p>Happy Clients</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="services-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Our Services</h2>
+                    <p>Comprehensive technology solutions tailored to meet your business needs</p>
+                </div>
+                <div class="services-grid">
+                    <div class="service-card">
+                        <div class="icon"><i class="fas fa-plane"></i></div>
+                        <h3>Avionics & Embedded Systems</h3>
+                        <p>Advanced avionics solutions and embedded system development</p>
+                    </div>
+                    <div class="service-card">
+                        <div class="icon"><i class="fas fa-microchip"></i></div>
+                        <h3>Mechanical Engineering</h3>
+                        <p>Comprehensive mechanical design and engineering services</p>
+                    </div>
+                    <div class="service-card">
+                        <div class="icon"><i class="fas fa-code"></i></div>
+                        <h3>Software Development</h3>
+                        <p>Custom software solutions and application development</p>
+                    </div>
+                    <div class="service-card">
+                        <div class="icon"><i class="fas fa-file-alt"></i></div>
+                        <h3>Technical Documentation</h3>
+                        <p>Professional technical writing and documentation services</p>
+                    </div>
+                    <div class="service-card">
+                        <div class="icon"><i class="fas fa-boxes"></i></div>
+                        <h3>Supply Chain Solutions</h3>
+                        <p>End-to-end supply chain management and optimization</p>
+                    </div>
+                    <div class="service-card">
+                        <div class="icon"><i class="fas fa-users"></i></div>
+                        <h3>HR Consultancy</h3>
+                        <p>Strategic human resource consulting and management</p>
+                    </div>
+                    <div class="service-card">
+                        <div class="icon"><i class="fas fa-cogs"></i></div>
+                        <h3>Industry Automation</h3>
+                        <p>Industrial automation and process optimization</p>
+                    </div>
+                    <div class="service-card">
+                        <div class="icon"><i class="fas fa-chart-line"></i></div>
+                        <h3>Digital Transformation</h3>
+                        <p>Digital solutions for modern business challenges</p>
+                    </div>
+                </div>
+                <div class="center-btn" style="margin-top: 50px;">
+                    <button class="btn btn-primary-outline" onclick="showSection('services')">View All Services</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="cta-section">
+            <div class="container">
+                <h2>Ready to Transform Your Business?</h2>
+                <p>Let's discuss how our solutions can help drive your success</p>
+                <button class="btn btn-primary" onclick="showSection('contact')">Contact Us Today</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" style="padding-top: 80px;">
+        <div class="about-section">
+            <div class="container">
+                <div class="section-header" style="margin-bottom: 60px;">
+                    <h2>About Aviansys Technologies</h2>
+                    <p>A leading multi-sector services provider specializing in engineering and technology solutions</p>
+                </div>
+
+                <div class="about-grid">
+                    <div class="about-text">
+                        <h2>Who We Are</h2>
+                        <p>Aviansys Technologies is a premier engineering and technology solutions provider, delivering end-to-end services from concept to product realization across multiple industries.</p>
+                        <p>With over 15 years of experience, we have established ourselves as trusted partners for organizations in aerospace, automotive, healthcare, and information technology sectors.</p>
+                        <p>Our comprehensive service portfolio includes avionics, embedded systems, mechanical engineering, software development, and more.</p>
+                        <ul class="checklist">
+                            <li><i class="fas fa-check-circle"></i> End-to-end concept to product realization</li>
+                            <li><i class="fas fa-check-circle"></i> Multi-sector expertise and experience</li>
+                            <li><i class="fas fa-check-circle"></i> Cutting-edge technology solutions</li>
+                            <li><i class="fas fa-check-circle"></i> Dedicated expert team</li>
+                        </ul>
+                    </div>
+                    <div class="about-highlights">
+                        <div class="highlight-box">
+                            <h3>500+</h3>
+                            <p>Projects Delivered</p>
+                        </div>
+                        <div class="highlight-box">
+                            <h3>50+</h3>
+                            <p>Expert Professionals</p>
+                        </div>
+                        <div class="highlight-box">
+                            <h3>4</h3>
+                            <p>Industry Sectors</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div style="margin-top: 80px;">
+                    <div class="section-header" style="margin-bottom: 50px;">
+                        <h2>Our Mission & Vision</h2>
+                    </div>
+                    <div class="mission-vision">
+                        <div class="mission-box">
+                            <div class="icon"><i class="fas fa-bullseye"></i></div>
+                            <h3>Our Mission</h3>
+                            <p>To deliver innovative, high-quality engineering and technology solutions that empower our clients to achieve their business objectives and drive sustainable growth.</p>
+                        </div>
+                        <div class="mission-box">
+                            <div class="icon"><i class="fas fa-eye"></i></div>
+                            <h3>Our Vision</h3>
+                            <p>To be recognized as a global leader in multi-sector engineering and technology solutions, known for technical excellence and unwavering commitment to client success.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="values-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Our Values</h2>
+                    <p>The principles that guide everything we do</p>
+                </div>
+                <div class="values-grid">
+                    <div class="value-card">
+                        <div class="icon"><i class="fas fa-award"></i></div>
+                        <h3>Excellence</h3>
+                        <p>Committed to delivering the highest quality solutions</p>
+                    </div>
+                    <div class="value-card">
+                        <div class="icon"><i class="fas fa-handshake"></i></div>
+                        <h3>Collaboration</h3>
+                        <p>Working together to achieve exceptional results</p>
+                    </div>
+                    <div class="value-card">
+                        <div class="icon"><i class="fas fa-lightbulb"></i></div>
+                        <h3>Innovation</h3>
+                        <p>Embracing cutting-edge technologies and methodologies</p>
+                    </div>
+                    <div class="value-card">
+                        <div class="icon"><i class="fas fa-chart-line"></i></div>
+                        <h3>Growth</h3>
+                        <p>Continuous improvement and expansion of capabilities</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="timeline-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Our Journey</h2>
+                    <p>Milestones in our path to excellence</p>
+                </div>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <h3>2008</h3>
+                            <h4>Company Founded</h4>
+                            <p>Aviansys Technologies established</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <h3>2012</h3>
+                            <h4>Expansion</h4>
+                            <p>Extended services to automotive sector</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <h3>2016</h3>
+                            <h4>Growth</h4>
+                            <p>Reached 100+ successful projects</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <h3>2020</h3>
+                            <h4>Innovation</h4>
+                            <p>Launched proprietary software products</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <h3>2024</h3>
+                            <h4>Excellence</h4>
+                            <p>Industry leader in multi-sector solutions</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" style="padding-top: 80px;">
+        <div class="services-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Our Services</h2>
+                    <p>Comprehensive engineering and technology solutions across multiple domains</p>
+                </div>
+                <div class="services-grid">
+                    <div class="service-card">
+                        <div class="icon"><i class="fas fa-plane"></i></div>
+                        <h3>Avionics & Embedded Systems</h3>
+                        <p>Advanced avionics solutions and embedded system development for aerospace applications</p>
+                    </div>
+                    <div class="service-card">
+                        <div class="icon"><i class="fas fa-microchip"></i></div>
+                        <h3>Mechanical Engineering</h3>
+                        <p>Complete mechanical design and engineering solutions with CAD/CAM expertise</p>
+                    </div>
+                    <div class="service-card">
+                        <div class="icon"><i class="fas fa-code"></i></div>
+                        <h3>Software Development</h3>
+                        <p>Custom software solutions tailored to your business needs and requirements</p>
+                    </div>
+                    <div class="service-card">
+                        <div class="icon"><i class="fas fa-file-alt"></i></div>
+                        <h3>Technical Documentation</h3>
+                        <p>Professional technical writing and comprehensive documentation services</p>
+                    </div>
+                    <div class="service-card">
+                        <div class="icon"><i class="fas fa-boxes"></i></div>
+                        <h3>Supply Chain Solutions</h3>
+                        <p>End-to-end supply chain management and logistics optimization</p>
+                    </div>
+                    <div class="service-card">
+                        <div class="icon"><i class="fas fa-users"></i></div>
+                        <h3>HR Consultancy</h3>
+                        <p>Strategic human resource consulting and talent management services</p>
+                    </div>
+                    <div class="service-card">
+                        <div class="icon"><i class="fas fa-cogs"></i></div>
+                        <h3>Industry Automation</h3>
+                        <p>Industrial automation and process control solutions for manufacturing</p>
+                    </div>
+                    <div class="service-card">
+                        <div class="icon"><i class="fas fa-chart-line"></i></div>
+                        <h3>Digital Transformation</h3>
+                        <p>Digital solutions for modern business challenges and opportunities</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div style="padding: 80px 20px; background: var(--white);">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Industries We Serve</h2>
+                    <p>Specialized expertise across key industry sectors</p>
+                </div>
+                <div class="services-grid">
+                    <div class="service-card">
+                        <div class="icon"><i class="fas fa-plane"></i></div>
+                        <h3>Aerospace</h3>
+                        <p>Advanced solutions for aviation and aerospace industries</p>
+                    </div>
+                    <div class="service-card">
+                        <div class="icon"><i class="fas fa-car"></i></div>
+                        <h3>Automotive</h3>
+                        <p>Innovative technologies for automotive sector development</p>
+                    </div>
+                    <div class="service-card">
+                        <div class="icon"><i class="fas fa-hospital"></i></div>
+                        <h3>Healthcare</h3>
+                        <p>Medical equipment and healthcare technology solutions</p>
+                    </div>
+                    <div class="service-card">
+                        <div class="icon"><i class="fas fa-laptop"></i></div>
+                        <h3>Information Technology</h3>
+                        <p>Cutting-edge IT solutions and services</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="cta-section">
+            <div class="container">
+                <h2>Ready to Get Started?</h2>
+                <p>Let's discuss how our services can benefit your organization</p>
+                <button class="btn btn-primary" onclick="showSection('contact')">Contact Us Now</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" style="padding-top: 80px;">
+        <div class="contact-section">
+            <div class="container">
+                <div class="section-header" style="margin-bottom: 60px;">
+                    <h2>Contact Us</h2>
+                    <p>Get in touch with our team to discuss your project requirements</p>
+                </div>
+
+                <div class="contact-grid">
+                    <div>
+                        <div class="contact-info-cards">
+                            <div class="info-card">
+                                <div class="icon"><i class="fas fa-map-marker-alt"></i></div>
+                                <div>
+                                    <h4>Visit Us</h4>
+                                    <p>Bangalore, Karnataka, India 560001</p>
+                                </div>
+                            </div>
+                            <div class="info-card">
+                                <div class="icon"><i class="fas fa-phone"></i></div>
+                                <div>
+                                    <h4>Call Us</h4>
+                                    <p>+91 80 1234 5678</p>
+                                </div>
+                            </div>
+                            <div class="info-card">
+                                <div class="icon"><i class="fas fa-envelope"></i></div>
+                                <div>
+                                    <h4>Email Us</h4>
+                                    <p>info@aviansys-tech.com</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div style="background: var(--primary); color: var(--white); padding: 30px; border-radius: 15px; margin-top: 30px;">
+                            <h4 style="margin-bottom: 20px;">Business Hours</h4>
+                            <div style="display: flex; justify-content: space-between; margin-bottom: 10px; padding-bottom: 10px; border-bottom: 1px solid rgba(255,255,255,0.2);">
+                                <span>Monday - Friday:</span>
+                                <span style="font-weight: 600;">9:00 AM - 6:00 PM</span>
+                            </div>
+                            <div style="display: flex; justify-content: space-between; margin-bottom: 10px; padding-bottom: 10px; border-bottom: 1px solid rgba(255,255,255,0.2);">
+                                <span>Saturday:</span>
+                                <span style="font-weight: 600;">10:00 AM - 2:00 PM</span>
+                            </div>
+                            <div style="display: flex; justify-content: space-between;">
+                                <span>Sunday:</span>
+                                <span style="font-weight: 600;">Closed</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div>
+                        <div class="contact-form">
+                            <h3>Send Us a Message</h3>
+                            <form id="contactForm" onsubmit="handleFormSubmit(event)">
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label>Full Name *</label>
+                                        <input type="text" name="name" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Email Address *</label>
+                                        <input type="email" name="email" required>
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label>Phone Number</label>
+                                        <input type="tel" name="phone">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Company Name</label>
+                                        <input type="text" name="company">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label>Service Interest *</label>
+                                    <select name="service" required>
+                                        <option value="">Select a service</option>
+                                        <option value="avionics">Avionics & Embedded Systems</option>
+                                        <option value="mechanical">Mechanical Engineering</option>
+                                        <option value="software">Software Development</option>
+                                        <option value="documentation">Technical Documentation</option>
+                                        <option value="supply-chain">Supply Chain Solutions</option>
+                                        <option value="hr">HR Consultancy</option>
+                                        <option value="automation">Industry Automation</option>
+                                        <option value="digital">Digital Transformation</option>
+                                        <option value="other">Other</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label>Message *</label>
+                                    <textarea name="message" required placeholder="Tell us about your project requirements..."></textarea>
+                                </div>
+                                <button type="submit" class="form-submit">Send Message</button>
+                            </form>
+                            <div class="success-message">
+                                <i class="fas fa-check-circle"></i>
+                                <h4>Thank You!</h4>
+                                <p>Your message has been sent successfully. We'll be in touch soon.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="footer-logo">
+                        <i class="fas fa-plane"></i>
+                        <div class="footer-logo-text">
+                            <h3>Aviansys</h3>
+                            <p>Technologies</p>
+                        </div>
+                    </div>
+                    <p>Delivering end-to-end engineering and technology solutions across multiple industries.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a onclick="showSection('home')">Home</a></li>
+                        <li><a onclick="showSection('about')">About Us</a></li>
+                        <li><a onclick="showSection('services')">Services</a></li>
+                        <li><a onclick="showSection('contact')">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Services</h4>
+                    <ul>
+                        <li><a href="#">Avionics & Embedded Systems</a></li>
+                        <li><a href="#">Software Development</a></li>
+                        <li><a href="#">Mechanical Engineering</a></li>
+                        <li><a href="#">Industry Automation</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Contact Info</h4>
+                    <ul class="contact-info">
+                        <li><i class="fas fa-map-marker-alt"></i> Bangalore, Karnataka, India</li>
+                        <li><i class="fas fa-phone"></i> +91 80 1234 5678</li>
+                        <li><i class="fas fa-envelope"></i> info@aviansys-tech.com</li>
+                    </ul>
+                    <div class="social-links">
+                        <a href="#" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                        <a href="#" title="Twitter"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Aviansys Technologies. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Show/Hide Sections
+        function showSection(sectionId) {
+            const sections = document.querySelectorAll('section');
+            sections.forEach(section => {
+                section.classList.remove('active');
+            });
+
+            const navLinks = document.querySelectorAll('.nav-link');
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+            });
+
+            const section = document.getElementById(sectionId);
+            if (section) {
+                section.classList.add('active');
+            }
+
+            const activeLink = Array.from(navLinks).find(link => {
+                return link.textContent.toLowerCase().includes(
+                    sectionId === 'home' ? 'home' :
+                    sectionId === 'about' ? 'about' :
+                    sectionId === 'services' ? 'services' :
+                    'contact'
+                );
+            });
+            if (activeLink) {
+                activeLink.classList.add('active');
+            }
+
+            window.scrollTo(0, 0);
+            closeMenu();
+        }
+
+        // Toggle Menu
+        function toggleMenu() {
+            const navLinks = document.querySelector('.nav-links');
+            navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
+            navLinks.style.position = 'absolute';
+            navLinks.style.flexDirection = 'column';
+            navLinks.style.top = '70px';
+            navLinks.style.left = '0';
+            navLinks.style.right = '0';
+            navLinks.style.backgroundColor = 'white';
+            navLinks.style.borderTop = '1px solid #e0e0e0';
+            navLinks.style.padding = '20px';
+            navLinks.style.gap = '10px';
+            navLinks.style.width = '100%';
+        }
+
+        function closeMenu() {
+            const navLinks = document.querySelector('.nav-links');
+            navLinks.style.display = 'none';
+        }
+
+        // Form Submit Handler
+        function handleFormSubmit(event) {
+            event.preventDefault();
+            const form = document.getElementById('contactForm');
+            const successMessage = document.querySelector('.success-message');
+
+            form.style.display = 'none';
+            successMessage.style.display = 'block';
+
+            setTimeout(() => {
+                form.reset();
+                form.style.display = 'block';
+                successMessage.style.display = 'none';
+            }, 5000);
+        }
+
+        // Scroll Effect on Navbar
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 100) {
+                nav.classList.add('scrolled');
+            } else {
+                nav.classList.remove('scrolled');
+            }
+        });
+
+        // Close menu on window resize
+        window.addEventListener('resize', () => {
+            if (window.innerWidth > 768) {
+                document.querySelector('.nav-links').style.display = 'flex';
+                document.querySelector('.nav-links').style.position = 'static';
+                document.querySelector('.nav-links').style.backgroundColor = 'transparent';
+                document.querySelector('.nav-links').style.borderTop = 'none';
+                document.querySelector('.nav-links').style.padding = '0';
+                document.querySelector('.nav-links').style.gap = '40px';
+                document.querySelector('.nav-links').style.width = 'auto';
+            }
+        });
+
+        // Smooth scroll behavior
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
