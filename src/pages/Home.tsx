@@ -72,52 +72,58 @@ export default function Home() {
 
   return (
     <div className="min-h-screen">
-      <section className="relative bg-gradient-to-br from-blue-900 via-blue-800 to-blue-900 text-white pt-32 pb-20 overflow-hidden">
-        <div className="absolute inset-0 opacity-10">
-          <div className="absolute top-20 left-20 w-72 h-72 bg-white rounded-full blur-3xl"></div>
-          <div className="absolute bottom-20 right-20 w-96 h-96 bg-blue-400 rounded-full blur-3xl"></div>
+      <section className="relative bg-gradient-to-br from-blue-950 via-blue-900 to-blue-800 text-white pt-40 pb-24 overflow-hidden">
+        <div className="absolute inset-0 opacity-20">
+          <div className="absolute top-0 left-1/4 w-96 h-96 bg-blue-400 rounded-full blur-3xl animate-pulse"></div>
+          <div className="absolute bottom-0 right-1/4 w-80 h-80 bg-blue-500 rounded-full blur-3xl animate-pulse" style={{animationDelay: '1s'}}></div>
         </div>
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="text-center space-y-6 animate-fade-in">
-            <h1 className="text-5xl md:text-6xl font-bold leading-tight">
+          <div className="text-center space-y-8 animate-fade-in">
+            <div className="inline-block">
+              <span className="px-4 py-2 bg-blue-900/50 backdrop-blur-sm border border-blue-400/30 rounded-full text-sm font-semibold text-blue-200">
+                Engineering Excellence Since 2008
+              </span>
+            </div>
+            <h1 className="text-6xl md:text-7xl font-bold leading-tight">
               Engineering Excellence
-              <span className="block text-blue-300 mt-2">Technology Innovation</span>
+              <span className="block text-transparent bg-gradient-to-r from-blue-300 to-blue-100 bg-clip-text mt-3">Technology Innovation</span>
             </h1>
-            <p className="text-xl md:text-2xl text-blue-100 max-w-3xl mx-auto">
+            <p className="text-xl md:text-2xl text-blue-100 max-w-4xl mx-auto leading-relaxed">
               End-to-end engineering and technology solutions for aerospace, automotive, healthcare, and IT industries
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center pt-6">
+            <div className="flex flex-col sm:flex-row gap-4 justify-center pt-8">
               <Link
                 to="/services"
-                className="inline-flex items-center justify-center px-8 py-4 bg-white text-blue-900 font-semibold rounded-lg hover:bg-blue-50 transition-all duration-300 transform hover:scale-105 shadow-lg"
+                className="inline-flex items-center justify-center px-8 py-4 bg-white text-blue-900 font-semibold rounded-xl hover:bg-blue-50 transition-all duration-300 transform hover:scale-105 hover:shadow-2xl shadow-lg group"
               >
                 Our Services
-                <ArrowRight className="ml-2 h-5 w-5" />
+                <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
               </Link>
               <Link
                 to="/contact"
-                className="inline-flex items-center justify-center px-8 py-4 bg-transparent border-2 border-white text-white font-semibold rounded-lg hover:bg-white hover:text-blue-900 transition-all duration-300 transform hover:scale-105"
+                className="inline-flex items-center justify-center px-8 py-4 bg-white/10 backdrop-blur-md border-2 border-white/30 text-white font-semibold rounded-xl hover:bg-white/20 transition-all duration-300 transform hover:scale-105 group"
               >
                 Get In Touch
+                <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
               </Link>
             </div>
           </div>
         </div>
       </section>
 
-      <section className="py-16 bg-white">
+      <section className="py-20 bg-gradient-to-b from-white to-blue-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             {stats.map((stat, index) => (
               <div
                 key={index}
-                className="text-center transform hover:scale-110 transition-transform duration-300"
+                className="text-center transform hover:scale-110 transition-all duration-300 p-6 rounded-xl bg-white shadow-sm hover:shadow-lg border border-gray-100"
               >
-                <div className="text-4xl md:text-5xl font-bold text-blue-600 mb-2">
+                <div className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-blue-600 to-blue-800 bg-clip-text text-transparent mb-3">
                   {stat.number}
                 </div>
-                <div className="text-gray-600 font-medium">{stat.label}</div>
+                <div className="text-gray-600 font-semibold text-sm">{stat.label}</div>
               </div>
             ))}
           </div>
@@ -137,15 +143,15 @@ export default function Home() {
             {services.map((service, index) => (
               <div
                 key={index}
-                className="bg-white p-6 rounded-xl shadow-md hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 group"
+                className="bg-white p-8 rounded-2xl shadow-md hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-3 group border border-gray-100 hover:border-blue-200"
               >
-                <div className="bg-blue-100 w-14 h-14 rounded-lg flex items-center justify-center mb-4 group-hover:bg-blue-600 transition-colors duration-300">
-                  <service.icon className="h-7 w-7 text-blue-600 group-hover:text-white transition-colors duration-300" />
+                <div className="bg-gradient-to-br from-blue-100 to-blue-50 w-16 h-16 rounded-xl flex items-center justify-center mb-6 group-hover:from-blue-600 group-hover:to-blue-700 transition-all duration-300 shadow-sm">
+                  <service.icon className="h-8 w-8 text-blue-600 group-hover:text-white transition-all duration-300 group-hover:scale-110" />
                 </div>
-                <h3 className="text-lg font-semibold text-gray-900 mb-2">
+                <h3 className="text-lg font-bold text-gray-900 mb-3">
                   {service.title}
                 </h3>
-                <p className="text-gray-600 text-sm">{service.description}</p>
+                <p className="text-gray-600 text-sm leading-relaxed">{service.description}</p>
               </div>
             ))}
           </div>
@@ -189,15 +195,15 @@ export default function Home() {
               </div>
             </div>
             <div className="relative">
-              <div className="bg-gradient-to-br from-blue-600 to-blue-800 rounded-2xl p-8 text-white shadow-2xl transform hover:scale-105 transition-transform duration-300">
-                <h3 className="text-2xl font-bold mb-6">Industries We Serve</h3>
+              <div className="bg-gradient-to-br from-blue-600 via-blue-700 to-blue-800 rounded-3xl p-10 text-white shadow-2xl transform hover:scale-105 transition-all duration-300 border border-blue-400/30">
+                <h3 className="text-3xl font-bold mb-8">Industries We Serve</h3>
                 <div className="grid grid-cols-2 gap-4">
                   {industries.map((industry, index) => (
                     <div
                       key={index}
-                      className="bg-white bg-opacity-20 backdrop-blur-sm p-4 rounded-lg text-center font-semibold hover:bg-opacity-30 transition-all duration-300"
+                      className="bg-white/10 backdrop-blur-md p-5 rounded-xl text-center font-semibold hover:bg-white/20 transition-all duration-300 border border-white/20 cursor-pointer group"
                     >
-                      {industry.name}
+                      <span className="group-hover:scale-110 transition-transform duration-300 inline-block">{industry.name}</span>
                     </div>
                   ))}
                 </div>
